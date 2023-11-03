@@ -8,6 +8,7 @@ const Body = () => {
   // can also be written as let arr = useState(resList);
   let [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchText, setSearchText] = useState();
+  let [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
   useEffect(() => {
     getRestaurants();
@@ -23,10 +24,11 @@ const Body = () => {
     const jsonData = await data.json();
     setListOfRestaurants(
       jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants || []
+        ?.restaurants
     );
-    console.log(
-      jsonData?.data?.cards[2].card.card.gridElements.infoWithStyle.restaurants
+    setFilteredRestaurants(
+      jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
     );
   };
 
@@ -46,11 +48,12 @@ const Body = () => {
         <button
           className="search-btn"
           onClick={() => {
-            listOfRestaurants = listOfRestaurants.filter((res) =>
-              res.info.name.includes(searchText)
+            const searchRes = listOfRestaurants.filter((res) =>
+              res.info.name.toLowerCase().includes(searchText?.toLowerCase())
             );
-
-            setListOfRestaurants(listOfRestaurants);
+            searchText
+              ? setFilteredRestaurants(searchRes)
+              : setFilteredRestaurants(listOfRestaurants);
           }}
         >
           Search
@@ -63,15 +66,15 @@ const Body = () => {
             const filteredRes = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4
             );
-            setListOfRestaurants(filteredRes);
+            setFilteredRestaurants(filteredRes);
           }}
         >
           Top Rated Restauants
         </button>
       </div>
       <div className="res-container">
-        {listOfRestaurants?.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} listData={restaurant} />
+        {filteredRestaurants?.map((restaurant) => (
+          <RestaurantCard key={restaurant?.info?.id} listData={restaurant} />
         ))}
       </div>
     </div>

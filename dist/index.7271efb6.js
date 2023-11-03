@@ -27441,6 +27441,7 @@ const Body = ()=>{
     // can also be written as let arr = useState(resList);
     let [listOfRestaurants, setListOfRestaurants] = (0, _react.useState)([]);
     const [searchText, setSearchText] = (0, _react.useState)();
+    let [filteredRestaurants, setFilteredRestaurants] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
         getRestaurants();
     }, []);
@@ -27449,12 +27450,12 @@ const Body = ()=>{
         console.log("hi");
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0826802&lng=80.2707184&page_type=DESKTOP_WEB_LISTING");
         const jsonData = await data.json();
-        setListOfRestaurants(jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
-        console.log(jsonData?.data?.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+        setListOfRestaurants(jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurants(jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
     return listOfRestaurants.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerDefault.default), {}, void 0, false, {
         fileName: "src/components/Body.js",
-        lineNumber: 34,
+        lineNumber: 36,
         columnNumber: 5
     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "body",
@@ -27470,26 +27471,26 @@ const Body = ()=>{
                         onChange: (e)=>setSearchText(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 38,
+                        lineNumber: 40,
                         columnNumber: 9
                     }, undefined),
                     console.log("hi"),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         className: "search-btn",
                         onClick: ()=>{
-                            listOfRestaurants = listOfRestaurants.filter((res)=>res.info.name.includes(searchText));
-                            setListOfRestaurants(listOfRestaurants);
+                            const searchRes = listOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText?.toLowerCase()));
+                            searchText ? setFilteredRestaurants(searchRes) : setFilteredRestaurants(listOfRestaurants);
                         },
                         children: "Search"
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 46,
+                        lineNumber: 48,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Body.js",
-                lineNumber: 37,
+                lineNumber: 39,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27498,41 +27499,41 @@ const Body = ()=>{
                     className: "filter-btn",
                     onClick: ()=>{
                         const filteredRes = listOfRestaurants.filter((res)=>res.info.avgRating > 4);
-                        setListOfRestaurants(filteredRes);
+                        setFilteredRestaurants(filteredRes);
                     },
                     children: "Top Rated Restauants"
                 }, void 0, false, {
                     fileName: "src/components/Body.js",
-                    lineNumber: 60,
+                    lineNumber: 63,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 59,
+                lineNumber: 62,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "res-container",
-                children: listOfRestaurants?.map((restaurant)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _restaurantCardDefault.default), {
+                children: filteredRestaurants?.map((restaurant)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _restaurantCardDefault.default), {
                         listData: restaurant
-                    }, restaurant.info.id, false, {
+                    }, restaurant?.info?.id, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 74,
+                        lineNumber: 77,
                         columnNumber: 11
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 72,
+                lineNumber: 75,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Body.js",
-        lineNumber: 36,
+        lineNumber: 38,
         columnNumber: 5
     }, undefined);
 };
-_s(Body, "hYdIGIwL6GUF7CrIeqox3jDipwk=");
+_s(Body, "GidtsPy1IGSULh50dtiG56faCCw=");
 _c = Body;
 exports.default = Body;
 var _c;
