@@ -1,0 +1,19 @@
+Header:
+
+- Logo
+- Nav items
+
+Body:
+
+- Search
+- RestaurantContainer
+- RestaurantCard
+  - Img
+  - Name of Restaurant, Star Rating, cuisine, etc.
+
+Footer:
+
+- Copyright
+- Links
+- Address
+- Contact
