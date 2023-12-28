@@ -1,110 +1,101 @@
 # React
 
-## Parcel
 
-### Features
+# Parcel
+- Dev Build
+- Local Server
+- HMR = Hot Module Replacement
+- File Watching Algorithm - written in C++
+- Caching - Faster Builds
+- Image Optimization
+- Minification
+- Bundling
+- Compress
+- Consistent Hashing
+- Code Splitting
+- Differential Bundling - support older browsers
+- Diagnostic
+- Error Handling
+- HTTPs
+- Tree Shaking - remove unused code
+- Different dev and prod bundles
 
-- **Dev Build**: Develop with ease using the development build.
-- **Local Server**: Run a local server for testing and development.
-- **HMR (Hot Module Replacement)**: Instantly view the changes without a full reload.
-- **File Watching Algorithm**: Optimized in C++ for efficient file monitoring.
-- **Caching**: Speed up builds with intelligent caching.
-- **Image Optimization**: Automatically optimize your images.
-- **Minification**: Minify your code for production.
-- **Bundling**: Bundle your assets for better performance.
-- **Compression**: Compress your files to reduce bandwidth.
-- **Consistent Hashing**: Ensure consistent hashing for assets.
-- **Code Splitting**: Split code for better loading times.
-- **Differential Bundling**: Support older browsers with targeted bundling.
-- **Diagnostic**: Gain insights with diagnostic tools.
-- **Error Handling**: Handle errors gracefully.
-- **HTTPs**: Support secure connections.
-- **Tree Shaking**: Remove unused code for a leaner bundle.
-- **Different dev and prod bundles**: Tailor your builds for development and production environments.
+
 
 # Namaste Food
 
-## Structure
 
-```plaintext
-- Header
-  - Logo
-  - Nav Items
-- Body
-  - Search
-  - RestaurantContainer
-    - RestaurantCard
-      - Img
-      - Name of Res, Star Rating, Cuisine, Delivery Time
-- Footer
-  - Copyright
-  - Links
-  - Address
-  - Contact
-```
+/**
+ * Header
+ *  - Logo
+ *  - Nav Items
+ * Body
+ *  - Search
+ *  - RestaurantContainer
+ *    - RestaurantCard
+ *      - Img
+ *      - Name of Res, Star Rating, cuisine, delery tie
+ * Footer
+ *  - Copyright
+ *  - Links
+ *  - Address
+ *  - Contact
+ */
 
-### Export/Import Patterns
 
-#### Default Export/Import
 
-```javascript
+ Two types of Export/Import
+
+
+- Default Export/Import
+
 export default Component;
 import Component from "path";
-```
 
-#### Named Export/Import
 
-```javascript
+- Named Export/Import
+
 export const Component;
-import { Component } from "path";
-```
+import {Component} from "path";
+
 
 # React Hooks
+ (Normal JS utility functions)
+- useState() - Superpowerful State Variables in react
+- useEffect()
 
-Explore the power of React hooks, offering supercharged state variables and more.
 
-- `useState()`: Superpowerful state variables in React.
-- `useEffect()`: Perform side effects in functional components.
 
-# Routing in Web Apps
+#  2 types Routing in web apps
+ - Client Side Routing
+ - Server Side Routing
 
-Learn about the two types of routing in web applications:
 
-- **Client Side Routing**
-- **Server Side Routing**
 
-# Redux Toolkit
 
-Supercharge your state management with Redux Toolkit.
+ # Redux Toolkit
+  - Install @reduxjs/toolkit and react-redux
+  - Build our store
+  - Connect our store to our app
+  - Slice (cartSlice)
+  - dispatch(action)
+  - Selector
 
-1. Install `@reduxjs/toolkit` and `react-redux`.
-2. Build your store.
-3. Connect your store to your app.
-4. Create slices (e.g., `cartSlice`).
-5. Dispatch actions.
-6. Use selectors to retrieve data.
 
-# Types of Testing (Developer)
+# Types of testing (devloper)
+ - Unit Testing
+ - Integration Testing
+ - End to End Testing - e2e testing
 
-Get familiar with different types of testing for developers:
-
-- **Unit Testing**
-- **Integration Testing**
-- **End to End Testing (e2e testing)**
-
-# Setting up Testing in Our App
-
-Follow these steps to set up testing in your app:
-
-1. Install React Testing Library.
-2. Install Jest.
-3. Install Babel dependencies.
-4. Configure Babel.
-5. Update Parcel Config file to disable default Babel transpilation.
-6. Initialize Jest with `npx jest --init`.
-7. Install jsdom library.
-8. Install `@babel/preset-react` to make JSX work in test cases.
-9. Include `@babel/preset-react` in your Babel config.
-10. Install `@testing-library/jest-dom`.
-
-Feel free to explore each section for detailed information and happy coding! 🚀
+# Setting up Testing in our app
+ - Install React Testing Library
+ - Installed jest
+ - Installed Babel dependencies
+ - Configure Babel 
+ - Configure Parcel Config file to disable default babel transpilation 
+ - Jest  - npx jest --init
+ - Install jsdom library
+ - Install @babel/preset-react - to make JSX work in test cases
+ - Include @babel/preset-react inside my babel config
+ - npm i -D @testing-library/jest-dom
+ 
