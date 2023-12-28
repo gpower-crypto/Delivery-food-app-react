@@ -27,7 +27,6 @@ const Body = () => {
       const restaurantData =
         jsonData?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
-      console.log(jsonData);
       setListOfRestaurants(restaurantData);
       setFilteredRestaurants(restaurantData);
     }
@@ -35,7 +34,7 @@ const Body = () => {
 
   if (!onlineStatus) return <h1>Looks like you are offline</h1>;
 
-  return listOfRestaurants.length === 0 ? (
+  return listOfRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="bg-gray-100 p-4">
@@ -43,6 +42,7 @@ const Body = () => {
         <div className="flex justify-between items-center">
           <input
             type="text"
+            data-testid="searchInput"
             className="w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring focus:border-blue-500"
             placeholder="Search"
             value={searchText}
@@ -51,7 +51,7 @@ const Body = () => {
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-lg ml-4"
             onClick={() => {
-              const searchRes = listOfRestaurants.filter((res) =>
+              const searchRes = listOfRestaurants?.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               searchText
@@ -66,7 +66,7 @@ const Body = () => {
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-lg"
             onClick={() => {
-              const filteredRes = listOfRestaurants.filter(
+              const filteredRes = listOfRestaurants?.filter(
                 (res) => res.info.avgRating > 4
               );
               setFilteredRestaurants(filteredRes);
@@ -75,7 +75,10 @@ const Body = () => {
             Top Rated Restaurants
           </button>
         </div>
-        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div
+          data-testid="resCard"
+          className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        >
           {filteredRestaurants?.map((restaurant) => (
             <Link
               to={"/restaurants/" + restaurant.info.id}

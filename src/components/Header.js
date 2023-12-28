@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const [loginState, setLoginState] = useState("login");
+  const [loginState, setLoginState] = useState("Login");
 
   const cartItems = useSelector((store) => store.cart.items);
 
@@ -38,9 +38,9 @@ const Header = () => {
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
             onClick={() =>
-              loginState === "login"
-                ? setLoginState("logout")
-                : setLoginState("login")
+              loginState === "Login"
+                ? setLoginState("Logout")
+                : setLoginState("Login")
             }
           >
             {loginState}

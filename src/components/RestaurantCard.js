@@ -13,7 +13,10 @@ const RestaurantCard = (props) => {
   } = resData?.info ?? "";
 
   return (
-    <div className="bg-white shadow-md rounded-lg overflow-hidden res-card transition-transform transform hover:scale-105 hover:shadow-lg">
+    <div
+      data-testid="resCard"
+      className="bg-white shadow-md rounded-lg overflow-hidden res-card transition-transform transform hover:scale-105 hover:shadow-lg"
+    >
       <img
         className="w-full h-40 object-cover"
         alt={name}

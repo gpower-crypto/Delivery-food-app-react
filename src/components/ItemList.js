@@ -15,6 +15,7 @@ const ItemList = ({ items }) => {
     <ul className="ml-4 space-y-4 m-6">
       {items.map((item, index) => (
         <li
+          data-testid="foodItems"
           key={item.card.info.id}
           className={`text-gray-700 hover:text-blue-500 transition duration-300 ${
             index < items.length - 1 ? "border-b border-gray-300 pb-2" : ""
